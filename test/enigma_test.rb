@@ -10,21 +10,45 @@ class EnigmaTest < Minitest::Test
   end
 
   def  test_it_decrypts_correct_number_of_characters
-   d = Enigma.new
-   message = d.decrypt("hello", "12345", date=Date.today)
+    d = Enigma.new
+    message = d.decrypt("hello", "12345", date=Date.today)
 
-   assert_equal 5, message.length
+    assert_equal 5, message.length
 
-   message = d.decrypt("turing", "12345", date=Date.today)
+    message = d.decrypt("turing", "12345", date=Date.today)
 
-   assert_equal 6, message.length
- end
+    assert_equal 6, message.length
+  end
 
- def test_it_can_encrypt
-   e = Enigma.new
-   message = e.encrypt("hello", "12345", date=Date.today)
+  def test_it_can_encrypt
+    e = Enigma.new
+    message = e.encrypt("hello", "12345", date=Date.today)
 
-   assert_equal "cfykj", message
- end
+    assert_equal "@%DP(", message
+  end
+
+  def  test_it_encrypts_correct_number_of_characters
+    d = Enigma.new
+    message = d.encrypt("hello", "12345", date=Date.today)
+
+    assert_equal 5, message.length
+
+    message = d.encrypt("turing", "12345", date=Date.today)
+
+    assert_equal 6, message.length
+  end
+
+  def test_it_can_encrypt_message
+    d = Enigma.new
+
+    assert d.encrypt("hello", "12345", date=Date.today)
+  end
+
+  def test_it_can_crack_message
+    d = Enigma.new
+    message = "Hello..end.."
+    output = d.encrypt(message)
+    assert "Hello..end..", d.cracker(output)
+  end
 
 end

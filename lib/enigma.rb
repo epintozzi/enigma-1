@@ -109,6 +109,6 @@ end
 e = Enigma.new
 message = "Won't you please be so kind and encrypt this very secret message?..end.."
 output = e.encrypt(message)
-puts output
-# puts e.decrypt(output, "12345")
+# # puts output
+# # puts e.decrypt(output, "04259")
 puts e.cracker(output)
