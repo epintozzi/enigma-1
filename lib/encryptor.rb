@@ -14,7 +14,7 @@ class Encryptor
     @alphabet = %w(a b c d e f g h i j k l m n o p q r s t u v w x y z)
   end
 
-  def encrypt(message, key = nil, date = Date.today)
+  def encrypt(message, key = nil, date = Date.today, alphabet = char_map)
 
     characters = message.chars
     @our_key = key || @key.key_generator
@@ -34,18 +34,23 @@ class Encryptor
       end
 
       if char_map.include?(char)
-        @rotated_character = char_map.rotate(char_map.index(char) + offset).first
+        @rotated_character = alphabet.rotate(alphabet.index(char) + offset).first
         @encrypted_message << @rotated_character
       else
         @encrypted_message << char
       end
-
     end
     return @encrypted_message.join
   end
+
+  def decrypt(message, key, date = Date.today)
+    self.encrypt(message, key, date, char_map.reverse)
+  end
+
 end
 
   e = Encryptor.new
   message = "hello..end.."
-  # puts e.@key
-  puts e.encrypt(message)
+  output = e.encrypt(message, "12345")
+  puts output
+  puts e.decrypt(output, "12345")
