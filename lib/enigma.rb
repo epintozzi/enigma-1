@@ -47,10 +47,31 @@ class Enigma
     self.encrypt(message, key, date, char_map.reverse)
   end
 
+private
+  # def does_something(index, offset_1, alphabet, char)
+  #   if index % 4 == 0
+  #     offset = offset_1.first_offset
+  #   elsif index % 4 == 1
+  #     offset = offset_1.second_offset
+  #   elsif index % 4 == 2
+  #     offset = offset_1.third_offset
+  #   elsif index % 4 == 3
+  #     offset = offset_1.fourth_offset
+  #   end
+  #
+  #   if char_map.include?(char)
+  #     @rotated_character = alphabet.rotate(alphabet.index(char) + offset).first
+  #     @encrypted_message << @rotated_character
+  #   else
+  #     @encrypted_message << char
+  #   end
+  # end
+
+
 end
 
-  # e = Enigma.new
-  # message = "hello..end.."
-  # output = e.encrypt(message, "12345")
-  # puts output
-  # puts e.decrypt(output, "12345")
+  e = Enigma.new
+  message = "hello..end.."
+  output = e.encrypt(message, "12345")
+  puts output
+  puts e.decrypt(output, "12345")
