@@ -2,8 +2,6 @@ require "./lib/enigma"
 
 enigma = Enigma.new
 
-#google command line arguments: read file (which returns message), pass to encprypt method (which returns encrypted string), write encrypted message to newly created file
-
 file_1 = ARGV[0]
 file_2 = ARGV[1]
 
