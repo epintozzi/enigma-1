@@ -49,8 +49,8 @@ class Enigma
 
 end
 
-  e = Enigma.new
-  message = "hello..end.."
-  output = e.encrypt(message, "12345")
-  puts output
-  puts e.decrypt(output, "12345")
+  # e = Enigma.new
+  # message = "hello..end.."
+  # output = e.encrypt(message, "12345")
+  # puts output
+  # puts e.decrypt(output, "12345")
