@@ -11,7 +11,9 @@ class Enigma
   end
 
   def char_map
-    @alphabet = %w(a b c d e f g h i j k l m n o p q r s t u v w x y z .)
+    @alphabet = %w(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+                   a b c d e f g h i j k l m n o p q r s t u v w x y z
+                   . ! @ # $ % ^ & * ( ) [ ] , < > ; : / ? \ |)
   end
 
   def encrypt(message, key = nil, date = Date.today, alphabet = char_map)
@@ -105,8 +107,8 @@ class Enigma
 end
 
 e = Enigma.new
-message = "please work this time..end.."
-output = e.encrypt(message, "12345")
+message = "Won't you please be so kind and encrypt this very secret message?..end.."
+output = e.encrypt(message)
 puts output
 # puts e.decrypt(output, "12345")
 puts e.cracker(output)
