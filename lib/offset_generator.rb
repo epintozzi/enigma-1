@@ -1,26 +1,26 @@
 require 'pry'
+require 'date'
 require './lib/key_generator'
 
 class OffsetGenerator
 
-  attr_accessor :key, :first_offset, :second_offset, :third_offset, :fourth_offset, :key_generator
+  attr_accessor :key, :first_offset, :second_offset, :third_offset, :fourth_offset
 
-  def initialize
-    @key = Key.new
+  def initialize(key, date=Date.today)
+    @key = key
+    @date = date
   end
 
   def date_generator
-    require 'date'
-    date = Date.today
-    month = date.mon.to_s
-    day = date.mday.to_s
-    year = date.year.to_s.slice(2,3)
+    month = @date.mon.to_s
+    day = @date.mday.to_s
+    year = @date.year.to_s.slice(2,3)
     @date_squared = ((month + day + year).to_i**2).to_s
     return @date_squared
   end
 
   def offset(range, slice_at)
-    @key.key_generator.slice(range).to_i + date_generator.slice(slice_at).to_i
+    @key.slice(range).to_i + date_generator.slice(slice_at).to_i
   end
 
   def first_offset
@@ -41,9 +41,9 @@ class OffsetGenerator
 
 end
 
-puts d = OffsetGenerator.new
-puts d.date_generator
-puts d.first_offset
-puts d.second_offset
-puts d.third_offset
-puts d.fourth_offset
+# puts d = OffsetGenerator.new
+
+# puts d.first_offset
+# puts d.second_offset
+# puts d.third_offset
+# puts d.fourth_offset
