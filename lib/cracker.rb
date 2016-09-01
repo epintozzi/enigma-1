@@ -2,7 +2,7 @@ require "./lib/enigma"
 
 input_file, output_file, date_string = ARGV
 
-input_string = open(input_file).read
+input_string = open(input_file).read.strip
 enigma = Enigma.new
 
 target = open(output_file, 'w')
