@@ -12,7 +12,7 @@ class OffsetGeneratorTest < Minitest::Test
   def test_it_calculates_the_first_offset
     offset = OffsetGenerator.new("12345", date = Date.today)
 
-    assert_equal 21, offset.first_offset
+    assert_equal 15, offset.first_offset
   end
 
   def test_it_calculates_the_second_offset

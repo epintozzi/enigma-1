@@ -24,7 +24,7 @@ class EnigmaTest < Minitest::Test
     e = Enigma.new
     message = e.encrypt("hello", "12345", date=Date.today)
 
-    assert_equal "@%DP(", message
+    assert_equal "w%DP#", message
   end
 
   def  test_it_encrypts_correct_number_of_characters

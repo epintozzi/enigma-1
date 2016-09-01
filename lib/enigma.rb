@@ -74,7 +74,6 @@ class Enigma
       if char_map.include?(char)
         @rotated_character = @alphabet.rotate(@alphabet.index(char) + offset).first
         @cracked_message << @rotated_character
-        # binding.pry
       else
         @cracked_message << char
       end
