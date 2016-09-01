@@ -50,6 +50,7 @@ class Enigma
   end
 
   def cracker(message)
+    char_map
     crack_this = message.reverse.chars
 
     @crack_offset_1 = @alphabet.index(".") - @alphabet.index(crack_this[0])
@@ -80,35 +81,4 @@ class Enigma
     end
     return @cracked_message.reverse.join
   end
-
-
-
-  private
-  # def does_something(index, offset_1, alphabet, char)
-  #   if index % 4 == 0
-  #     offset = offset_1.first_offset
-  #   elsif index % 4 == 1
-  #     offset = offset_1.second_offset
-  #   elsif index % 4 == 2
-  #     offset = offset_1.third_offset
-  #   elsif index % 4 == 3
-  #     offset = offset_1.fourth_offset
-  #   end
-  #
-  #   if char_map.include?(char)
-  #     @rotated_character = alphabet.rotate(alphabet.index(char) + offset).first
-  #     @encrypted_message << @rotated_character
-  #   else
-  #     @encrypted_message << char
-  #   end
-  # end
-
-
 end
-
-e = Enigma.new
-message = "Won't you please be so kind and encrypt this very secret message?..end.."
-output = e.encrypt(message)
-# # puts output
-# # puts e.decrypt(output, "04259")
-puts e.cracker(output)

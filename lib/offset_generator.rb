@@ -12,21 +12,10 @@ class OffsetGenerator
   end
 
   def date_generator
-    month = @date.mon.to_s
-    day = @date.mday.to_s
-    year = @date.year.to_s.slice(2,3)
-    @date_squared = ((month + day + year).to_i**2).to_s
+    date_string = @date.strftime('%m%d%y')
+    @date_squared = (date_string.to_i**2).to_s
     return @date_squared
   end
-  # def date_generator
-  #   # @date = @date.strftime('%m%d%y').to_i
-  #   @date_squared = (@date**2).to_s
-  #   binding.pry
-  # end
-  #
-  # def date_squared
-  #   @date_squared = date_generator**2
-  # end
 
   def offset(range, slice_at)
     @key.slice(range).to_i + date_generator.slice(slice_at).to_i
